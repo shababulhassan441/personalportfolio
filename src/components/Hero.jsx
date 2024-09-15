@@ -9,11 +9,11 @@ const Hero = () => {
       <div className=" z-20 hero-content max-w-[90%] pt-[150px] mx-auto flex flex-col gap-[100px] ">
         <div className="flex flex-col gap-5 mx-auto text-center items-center">
           <p className="text-[26px] text-textcolor font-semibold border border-secondary px-[20px] rounded-full">
-            Hello !
+            Hello &#10069;
           </p>
           <h2 className="lg:text-[80px] text-[45px] leading-[1em] text-secondary font-semibold">
             {" "}
-            I'm <span className="text-primary">Shabab,</span>
+            I&apos;m <span className="text-primary">Shabab,</span>
           </h2>
           <h2 className=" text-[45px] lg:text-[80px] capitalize leading-[1em] font-semibold text-secondary">
             {" "}

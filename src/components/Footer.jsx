@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="pt-[80px] px-[30px] md:px-[70px] rounded-t-[80px] bg-secondary">
       <div className=" flex gap-3 flex-wrap w-[100%] justify-between items-center mx-auto">
         <h3 className=" capitalize text-[32px] md:text-[42px] font-semibold text-white">
-          let's connect there
+          let&apos;s connect there
         </h3>
         <Button text="hire me" bg={true} icon={true} />
       </div>

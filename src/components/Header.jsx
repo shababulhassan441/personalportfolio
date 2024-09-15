@@ -35,7 +35,7 @@ const Header = () => {
         window.removeEventListener("scroll", controlNavbar);
       };
     }
-  }, [lastScrollY]);
+  }, [lastScrollY,controlNavbar]);
 
   return (
     <div className="">
@@ -91,7 +91,7 @@ const Header = () => {
           navbar ? " left-0 " : " left-[-100%] "
         }`}
       >
-        <Image src="/assets/mylogo.png" height={50} width={150} />
+        <Image src="/assets/mylogo.png" alt="logo" height={50} width={150} />
         <div className=" flex flex-col gap-5 text-[18px] text-white">
           <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="home">Home</Link>
           <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="about">About</Link>

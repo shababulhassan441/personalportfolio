@@ -15,7 +15,7 @@ const About = () => {
             </div>
             <div className=" w-[100%] lg:w-[50%] flex flex-col gap-3 p-[40px]">
                 <p className='text-primary text-[22px] capitalize '>front end developer</p>
-                <p className='text-[42px] font-semibold text-white capitalize leading-[1.2em]'>I'm Shabab passionate  developer </p>
+                <p className='text-[42px] font-semibold text-white capitalize leading-[1.2em]'>I&apos;m Shabab passionate  developer </p>
                 <p className='text-white text-[17px] mb-[20px]'>Hello! I am Shabab, a seasoned FullStack Web Developer with a Computer Engineering background. Proficient in HTML5, CSS3, Bootstrap, Tailwind, Sass, JavaScript ES6, ReactJS, TypeScript, NextJS, and much more.I specialize in creating visually stunning responsive, and SEO-friendly websites and apps from custom Figma/PSD designs. Let’s turn your vision into reality. Contact me to get started!</p>
                 <Button text="hire me" bg={true} />
             </div>
