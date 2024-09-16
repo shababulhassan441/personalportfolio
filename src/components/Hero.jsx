@@ -4,6 +4,7 @@ import Image from "next/image";
 import Button from "./parts/Button";
 import { ImQuotesLeft } from "react-icons/im";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -17,7 +18,7 @@ const containerVariants = {
 };
 
 const childVariants = {
-  hidden: ({ axis = "y", value = 0, scale = 1  } = {}) => ({
+  hidden: ({ axis = "y", value = 0, scale = 1 } = {}) => ({
     opacity: 0,
     x: axis === "x" ? value : 0, // Use value for x-axis movement if 'x'
     y: axis === "y" ? value : 0, // Use value for y-axis movement if 'y'
@@ -27,11 +28,30 @@ const childVariants = {
     opacity: 1,
     y: 0,
     x: 0,
-    scale: 1,  // Reset the scale to original size
+    scale: 1, // Reset the scale to original size
     transition: { type: "spring", stiffness: 40, damping: 20 },
   },
 };
+
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768;
+      // console.log("Screen width:", window.innerWidth);
+      // console.log("Is mobile:", mobile);
+      setIsMobile(mobile);
+    };
+
+    checkMobile(); // Initial check
+    window.addEventListener("resize", checkMobile); // Update on resize
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
   return (
     <div id="home" className="">
       <motion.div
@@ -77,13 +97,19 @@ const Hero = () => {
           <div className="w-[100%] order-3 lg:order-1 lg:w-[20%]">
             <motion.div
               variants={childVariants}
-              custom={{ axis: "x", value: -50 }}
+              custom={
+                isMobile ? { axis: "y", value: 50 } : { axis: "x", value: -50 }
+              }
               className="flex flex-col gap-[15px]"
             >
               <ImQuotesLeft size={30} />
               <motion.p
                 variants={childVariants}
-                custom={{ axis: "x", value: -50 }}
+                custom={
+                  isMobile
+                    ? { axis: "y", value: 50 }
+                    : { axis: "x", value: -50 }
+                }
                 className="text-[17px]"
               >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id
@@ -91,7 +117,11 @@ const Hero = () => {
               </motion.p>
               <motion.div
                 variants={childVariants}
-                custom={{ axis: "x", value: -50 }}
+                custom={
+                  isMobile
+                    ? { axis: "y", value: 50 }
+                    : { axis: "x", value: -50 }
+                }
                 className=""
               >
                 <p className="font-semibold text-[50px]">450+</p>
@@ -102,16 +132,30 @@ const Hero = () => {
 
           {/* Middle Column */}
           <div className=" relative order-1 h-[318px] lg:h-[550px] lg:order-2 w-[100%] lg:w-[65%] flex justify-center flex-col items-center">
-            <motion.div variants={childVariants} custom={{scale:.6}} className=" mt-[-135px] w-[340px] lg:w-[525px]">
-            <Image src="/assets/profile-img.png" width={450} height={50} alt="profileImg" className="w-full" />
+            <motion.div
+              variants={childVariants}
+              custom={{ scale: 0.6 }}
+              className=" mt-[-135px] w-[340px] lg:w-[525px]"
+            >
+              <Image
+                src="/assets/profile-img.png"
+                width={450}
+                height={50}
+                alt="profileImg"
+                className="w-full"
+              />
             </motion.div>
-            <motion.div  variants={childVariants} custom={{scale:.6}} className="z-[-10] absolute bottom-0 w-[80%] lg:w-[100%]">
-            <Image 
-              src="/assets/intersect.png"
-              height={50}
-              width={800}
-              className="w-full"
-            />
+            <motion.div
+              variants={childVariants}
+              custom={{ scale: 0.6 }}
+              className="z-[-10] absolute bottom-0 w-[80%] lg:w-[100%]"
+            >
+              <Image
+                src="/assets/intersect.png"
+                height={50}
+                width={800}
+                className="w-full"
+              />
             </motion.div>
             <motion.div
               variants={childVariants}
@@ -128,7 +172,9 @@ const Hero = () => {
             {/* strar rating */}
             <motion.div
               variants={childVariants}
-              custom={{ axis: "x", value: 50 }}
+              custom={
+                isMobile ? { axis: "y", value: 50 } : { axis: "x", value: 50 }
+              }
               className="flex items-center"
             >
               <svg
@@ -181,21 +227,27 @@ const Hero = () => {
             {/* text */}
             <motion.p
               variants={childVariants}
-              custom={{ axis: "x", value: 50 }}
+              custom={
+                isMobile ? { axis: "y", value: 50 } : { axis: "x", value: 50 }
+              }
               className="text-[50px] font-semibold"
             >
               3 Years
             </motion.p>
             <motion.p
               variants={childVariants}
-              custom={{ axis: "x", value: 50 }}
+              custom={
+                isMobile ? { axis: "y", value: 50 } : { axis: "x", value: 50 }
+              }
               className="text-[45px] font-medium"
             >
               Expert
             </motion.p>
             <motion.span
               variants={childVariants}
-              custom={{ axis: "x", value: 50 }}
+              custom={
+                isMobile ? { axis: "y", value: 50 } : { axis: "x", value: 50 }
+              }
               className="h-[4px] w-[220px] block bg-black"
             ></motion.span>
           </div>
