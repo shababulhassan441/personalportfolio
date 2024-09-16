@@ -35,7 +35,7 @@ const Header = () => {
         window.removeEventListener("scroll", controlNavbar);
       };
     }
-  }, [lastScrollY,controlNavbar]);
+  }, [lastScrollY, controlNavbar]);
 
   return (
     <div className="">
@@ -63,7 +63,7 @@ const Header = () => {
             Service
           </Link>
         </div>
-        <Image src="/assets/mylogo.png" width={140} height={50} alt="logo" />
+        <Image style={{width:'140px',height:'50px'}} src="/assets/mylogo.png" width={140} height={50} alt="logo" />
         <div className="right-links hidden md:flex text-white cursor-pointer text-[18px] list-none  gap-[20px]">
           <Link offset={-140} spy={false} smooth={true} to="skills">
             Skills
@@ -93,11 +93,29 @@ const Header = () => {
       >
         <Image src="/assets/mylogo.png" alt="logo" height={50} width={150} />
         <div className=" flex flex-col gap-5 text-[18px] text-white">
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="home">Home</Link>
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="about">About</Link>
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="services">Services</Link>
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="skills">Skills</Link>
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="projects">Projects</Link>
+          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="home">
+            Home
+          </Link>
+          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="about">
+            About
+          </Link>
+          <Link
+            onClick={() => setNavbar((e) => !e)}
+            smooth={true}
+            to="services"
+          >
+            Services
+          </Link>
+          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="skills">
+            Skills
+          </Link>
+          <Link
+            onClick={() => setNavbar((e) => !e)}
+            smooth={true}
+            to="projects"
+          >
+            Projects
+          </Link>
         </div>
       </div>
     </div>
