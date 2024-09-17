@@ -47,14 +47,25 @@ const Header = () => {
         }`}
       >
         <div className="left-links hidden md:flex text-white cursor-pointer text-[18px] list-none gap-[20px]">
-          <Link spy={false} smooth={true} to="home">
+          <Link
+            className="hover:text-primary"
+            spy={false}
+            smooth={true}
+            to="home"
+          >
             Home
           </Link>
-          <Link offset={-100} spy={false} smooth={true} to="about">
+          <Link
+            className="hover:text-primary"
+            offset={-100}
+            spy={false}
+            smooth={true}
+            to="about"
+          >
             About
           </Link>
           <Link
-            activeStyle={true}
+            className="hover:text-primary"
             offset={-100}
             spy={false}
             smooth={true}
@@ -63,15 +74,40 @@ const Header = () => {
             Service
           </Link>
         </div>
-        <Image style={{width:'140px',height:'50px'}} src="/assets/mylogo.png" width={140} height={50} alt="logo" />
+        <Image
+          style={{ width: "140px", height: "55px" }}
+          src="/assets/mylogo.png"
+          priority
+          width={140}
+          height={50}
+          alt="logo"
+        />
         <div className="right-links hidden md:flex text-white cursor-pointer text-[18px] list-none  gap-[20px]">
-          <Link offset={-140} spy={false} smooth={true} to="skills">
+          <Link
+            className="hover:text-primary"
+            offset={-140}
+            spy={false}
+            smooth={true}
+            to="skills"
+          >
             Skills
           </Link>
-          <Link offset={-100} spy={false} smooth={true} to="projects">
+          <Link
+            className="hover:text-primary"
+            offset={-100}
+            spy={false}
+            smooth={true}
+            to="projects"
+          >
             Projects
           </Link>
-          <Link spy={false} smooth={true} to="contact">
+          <Link
+            className="hover:text-primary"
+            spy={false}
+            smooth={true}
+            offset={-80}
+            to="contact"
+          >
             Contact
           </Link>
         </div>
@@ -93,28 +129,54 @@ const Header = () => {
       >
         <Image src="/assets/mylogo.png" alt="logo" height={50} width={150} />
         <div className=" flex flex-col gap-5 text-[18px] text-white">
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="home">
+          <Link
+            className="hover:text-primary"
+            onClick={() => setNavbar((e) => !e)}
+            smooth={true}
+            to="home"
+          >
             Home
           </Link>
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="about">
+          <Link
+            className="hover:text-primary"
+            onClick={() => setNavbar((e) => !e)}
+            smooth={true}
+            to="about"
+          >
             About
           </Link>
           <Link
+            className="hover:text-primary"
             onClick={() => setNavbar((e) => !e)}
             smooth={true}
             to="services"
           >
             Services
           </Link>
-          <Link onClick={() => setNavbar((e) => !e)} smooth={true} to="skills">
+          <Link
+            className="hover:text-primary"
+            onClick={() => setNavbar((e) => !e)}
+            smooth={true}
+            to="skills"
+          >
             Skills
           </Link>
           <Link
+            className="hover:text-primary"
             onClick={() => setNavbar((e) => !e)}
             smooth={true}
             to="projects"
           >
             Projects
+          </Link>
+          <Link
+            className="hover:text-primary"
+            onClick={() => setNavbar((e) => !e)}
+            smooth={true}
+            to="contact"
+            offset={-80}
+          >
+            Contact Me
           </Link>
         </div>
       </div>

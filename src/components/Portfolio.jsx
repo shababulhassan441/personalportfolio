@@ -3,10 +3,17 @@ import { useState } from "react";
 import React from "react";
 import Button from "./parts/Button";
 import Image from "next/image";
-import { tabsData, projectData } from "../data/data";
+import { motion } from "framer-motion";
+import {
+  tabsData,
+  projectData,
+  containerVariants,
+  childVariants,
+} from "@/data/data";
 
 const Portfolio = () => {
   const [items, setItems] = useState(projectData);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const filterItem = (categItem) => {
     if (categItem.toLowerCase() === "all") {
@@ -17,28 +24,35 @@ const Portfolio = () => {
       const updatedItems = projectData.filter((curElem) => {
         return curElem.category.toLowerCase() === categItem.toLowerCase();
       });
-  
+
       setItems(updatedItems);
     }
+    setSelectedCategory(categItem); 
   };
 
   return (
     <div id="projects" className="">
-      <div className=" max-w-[1240px] mx-auto py-[60px] pt-[40px] my-[60px] text-center">
-        <h2 className=" text-center text-black capitalize text-[52px] font-semibold">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{amount: 0.2 }}
+        className=" max-w-[1240px] mx-auto py-[60px] pt-[40px] my-[60px] text-center"
+      >
+        <motion.h2 variants={childVariants} custom={{axis:"y",value:80}} className=" text-center text-black capitalize text-[52px] font-semibold">
           My <span className="text-primary">Projects</span>{" "}
-        </h2>
+        </motion.h2>
         <div className="tabs-container flex-wrap flex justify-center gap-3 mt-[40px] py-[20px] max-w-[800px] mx-auto">
           {tabsData.map((tab, index) => (
-            <div key={index} className="">
-              <Button click={filterItem} text={tab.name} />
-            </div>
+            <motion.div variants={childVariants} custom={{axis:"y",value:60}} key={index} className="">
+              <Button click={filterItem} text={tab.name} isSelected={selectedCategory.toLowerCase() === tab.name.toLowerCase()} />
+            </motion.div>
           ))}
         </div>
 
         <div className="flex flex-wrap justify-center gap-[40px] mt-[40px]">
           {items.map(({ id, name, desc, link, category, img }, index) => (
-            <div
+            <motion.div variants={childVariants}  custom={{axis:"y",value:50}}
               key={index}
               className="portfolio-card p-[20px] w-[330px] md:w-[370px] rounded-[15px] shadow-[5px_5px_15px_1px_rgba(0,0,0,0.2)]"
             >
@@ -56,10 +70,10 @@ const Portfolio = () => {
                 <p className="mb-[10px]">{desc}</p>
                 <Button text="view demo" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

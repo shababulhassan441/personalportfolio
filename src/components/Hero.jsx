@@ -5,33 +5,8 @@ import Button from "./parts/Button";
 import { ImQuotesLeft } from "react-icons/im";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3, // Stagger animations of children
-      when: "beforeChildren",
-    },
-  },
-};
-
-const childVariants = {
-  hidden: ({ axis = "y", value = 0, scale = 1 } = {}) => ({
-    opacity: 0,
-    x: axis === "x" ? value : 0, // Use value for x-axis movement if 'x'
-    y: axis === "y" ? value : 0, // Use value for y-axis movement if 'y'
-    scale: scale,
-  }),
-  visible: {
-    opacity: 1,
-    y: 0,
-    x: 0,
-    scale: 1, // Reset the scale to original size
-    transition: { type: "spring", stiffness: 40, damping: 20 },
-  },
-};
+import { containerVariants, childVariants } from "@/data/data";
+import { Link } from "react-scroll";
 
 const Hero = () => {
   const getInitialMobileState = () =>
@@ -41,8 +16,6 @@ const Hero = () => {
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
-      // console.log("Screen width:", window.innerWidth);
-      // console.log("Is mobile:", mobile);
       setIsMobile(mobile);
     };
 
@@ -55,7 +28,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div id="home" className="">
+    <div id="home" className="overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -76,7 +49,7 @@ const Hero = () => {
             className=" head lg:text-[80px] text-[45px] leading-[1em] text-secondary font-semibold"
           >
             {" "}
-            I&apos;m <span className="text-primary">Shabab,</span>
+            I&apos;m <span className="text-primary">Shabab</span>
           </motion.h2>
           <motion.h2
             variants={childVariants}
@@ -86,10 +59,6 @@ const Hero = () => {
             {" "}
             full stack developer
           </motion.h2>
-          {/* <p className="text-[22px] max-w-[550px]  text-textcolor">
-            I am a full-stack developer focused on creating websites that
-            provide the best experience for users.
-          </p> */}
         </div>
 
         {/* second row in hero section */}
@@ -114,8 +83,8 @@ const Hero = () => {
                 }
                 className="text-[17px]"
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id
-                soluta nobis aliquid quo molestiae maiores adipisci. a.
+                Lets bring your ideas to life and create an exceptional digital
+                experience.
               </motion.p>
               <motion.div
                 variants={childVariants}
@@ -126,7 +95,7 @@ const Hero = () => {
                 }
                 className=""
               >
-                <p className="font-semibold text-[50px]">450+</p>
+                <p className="font-semibold text-[50px]">120+</p>
                 <p className="text-[17px] capitalize">client served</p>
               </motion.div>
             </motion.div>
@@ -156,6 +125,7 @@ const Hero = () => {
                 src="/assets/intersect.png"
                 height={50}
                 width={800}
+                alt="intersectGlobe"
                 className="w-full"
               />
             </motion.div>
@@ -164,8 +134,12 @@ const Hero = () => {
               custom={{ axis: "y", value: 50 }}
               className=" absolute bottom-[80px] btn-wrapper flex gap-2 bg-white rounded-full p-2 "
             >
-              <Button click={""} text="portfolio" bg={true} icon={true} />
-              <Button click={""} text="hire me" bg={false} icon={false} />
+              <Link smooth={true} to="projects">
+                <Button click={""} text="portfolio" bg={true} icon={true} />
+              </Link>
+              <Link smooth={true} to="contact" offset={-80}>
+                <Button click={""} text="hire me" bg={false} icon={false} />
+              </Link>
             </motion.div>
           </div>
 
@@ -243,7 +217,7 @@ const Hero = () => {
               }
               className="text-[45px] font-medium"
             >
-              Expert
+              Experience
             </motion.p>
             <motion.span
               variants={childVariants}

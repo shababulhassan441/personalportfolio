@@ -1,35 +1,44 @@
-import React from 'react'
-import Image from 'next/image'
+"use client";
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { containerVariants, childVariants, skillIcons } from "@/data/data";
 
-const skillIcons = [
-    {icon:"/assets/reacticon.png" ,label:"ReactJs"},
-    {icon:"/assets/nextjs.png"  ,label:"NextJs"},
-    {icon:"/assets/wordpress.png" ,label:"wordpress"},
-    {icon:"/assets/figma.png" ,label:"figma"},
-    {icon:"/assets/nextjs.png" ,label:"nextjs"},
-    {icon: "/assets/reacticon.png",label:"Reactjs"},
-    {icon:"/assets/nodejs.png" ,label:"nodejs"},
-    {icon:"/assets/tailwind.png" ,label:"tailwind"},
-]
 const Skills = () => {
   return (
-    <div id='skills' className=''>
-        <div className=" max-w-[1240px] mx-auto my-[60px] text-center">
-           <h2 className=' text-center text-black capitalize text-[52px] font-semibold'>Skills <span className='text-primary'>stack</span> </h2>
-           <div className="flex flex-wrap justify-center gap-6 mt-[40px] w-[90%] mx-auto">
-           {
-              skillIcons.map((item,index)=>(
-                <div key={index} className="border border-black/40 p-5 w-[200px] flex flex-col items-center gap-2 rounded-md" >
-                  <Image width={80} height={80} src={item.icon} alt={item.label} />
-                  <p className='text-[20px] font-semibold capitalize'>{item.label}</p>
-                </div>
-              ))
-           }
-           </div>
-          
+    <div id="skills" className="">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.5 }}
+        className=" max-w-[1240px] mx-auto my-[60px] text-center"
+      >
+        <motion.h2
+          variants={childVariants}
+          custom={{ axis: "y", value: 80 }}
+          className=" text-center text-black capitalize text-[52px] font-semibold"
+        >
+          Skills <span className="text-primary">stack</span>{" "}
+        </motion.h2>
+        <div className="flex flex-wrap justify-center gap-7 mt-[40px] w-[90%] mx-auto">
+          {skillIcons.map((item, index) => (
+            <motion.div
+              variants={childVariants}
+              custom={{ axis: "y", value: 50 }}
+              key={index}
+              className="shadow-[5px_5px_15px_1px_rgba(0,0,0,0.2)] p-5 w-[200px] flex flex-col items-center gap-4 rounded-md"
+            >
+              <Image width={80} height={80} src={item.icon} alt={item.label} />
+              <p className="text-[21px] font-semibold capitalize">
+                {item.label}
+              </p>
+            </motion.div>
+          ))}
         </div>
+      </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

@@ -1,9 +1,11 @@
 "use client";
-import React, { useRef,useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Image from "next/image";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { containerVariants, childVariants } from "@/data/data";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const form = useRef();
@@ -20,7 +22,7 @@ const Contact = () => {
       .then(
         () => {
           console.log("SUCCESS!");
-          e.target.reset(); 
+          e.target.reset();
           setLoading(false);
           toast.success("Email sent successfully!"); // Show success toast
         },
@@ -31,17 +33,53 @@ const Contact = () => {
         }
       );
   };
+  //checking mobile state for animations
+  const getInitialMobileState = () =>
+    typeof window !== "undefined" && window.innerWidth <= 768;
+  const [isMobile, setIsMobile] = useState(getInitialMobileState);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+    };
+
+    checkMobile(); // Initial check
+    window.addEventListener("resize", checkMobile); // Update on resize
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
+  const mobileVersion = (value) => {
+    return isMobile ? { axis: "y", value: 50 } : { axis: "x", value: value };
+  };
   return (
     <div className="">
-      <div
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.5 }}
         className=" w-[80%] md:w-[95%] max-w-[1200px] shadow-[0px_0px_25px_1px_rgba(0,0,0,0.2)] mx-auto  text-black/70 p-8 rounded-[25px] my-[40px] mb-[60px]"
         id="contact"
       >
+        <motion.h2
+          variants={childVariants}
+          custom={{ axis: "y", value: 80 }}
+          className=" text-center text-black capitalize text-[52px] font-semibold"
+        >
+          My <span className="text-primary">Services</span>{" "}
+        </motion.h2>
         <div className="flex justify-between flex-col lg:flex-row">
           <div className="flex justify-center items-center">
             <ul className="space-y-4">
-              <li className="flex items-center gap-3">
+              <motion.li
+                variants={childVariants}
+                custom={mobileVersion(-50)}
+                className="flex items-center gap-3"
+              >
                 <Image
                   src="/assets/phone.png"
                   width={80}
@@ -50,8 +88,12 @@ const Contact = () => {
                   className=" h-[50px] md:h-[90px] w-auto ]"
                 />
                 <p className=" text-[14px] md:text-xl">+92 323 8093104</p>
-              </li>
-              <li className="flex items-center gap-3">
+              </motion.li>
+              <motion.li
+                variants={childVariants}
+                custom={mobileVersion(-50)}
+                className="flex items-center gap-3"
+              >
                 <Image
                   src="/assets/mail.png"
                   alt="phone"
@@ -62,18 +104,32 @@ const Contact = () => {
                 <p className=" text-[14px] md:text-xl">
                   shababulhassan441@gmail.com
                 </p>
-              </li>
+              </motion.li>
             </ul>
           </div>
 
           <div className=" p-1 md:p-6 max-w-[550px]">
-            <h2 className="text-5xl font-bold text-primary mb-4">
+            <motion.h2
+              variants={childVariants}
+              custom={mobileVersion(50)}
+              className="text-5xl font-bold text-primary mb-4"
+            >
               Lets connect
-            </h2>
-            <p className="text-black/70 mb-6">
+            </motion.h2>
+            <motion.p
+              variants={childVariants}
+              custom={mobileVersion(50)}
+              className="text-black/70 mb-6"
+            >
               Send me message and lets schedule a call
-            </p>
-            <form ref={form} onSubmit={sendEmail} className="space-y-4">
+            </motion.p>
+            <motion.form
+              variants={childVariants}
+              custom={mobileVersion(50)}
+              ref={form}
+              onSubmit={sendEmail}
+              className="space-y-4"
+            >
               <div className="grid md:grid-cols-2 gap-4">
                 <input
                   type="text"
@@ -111,13 +167,13 @@ const Contact = () => {
                 disabled={loading}
                 className="bg-primary/90 hover:bg-primary/100 text-white px-6 py-2 w-full font-semibold text-xl rounded-xl"
               >
-               {loading ? "Loading..." : "Send message"}
+                {loading ? "Loading..." : "Send message"}
               </button>
-            </form>
+            </motion.form>
             <ToastContainer />
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
