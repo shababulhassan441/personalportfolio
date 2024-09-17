@@ -134,6 +134,6 @@ export  const projectData = [
       y: 0,
       x: 0,
       scale: 1, // Reset the scale to original size
-      transition: { type: "spring", stiffness: 40, damping: 20 },
+      transition: { type: "spring", stiffness: 40, damping: 15 },
     },
   };

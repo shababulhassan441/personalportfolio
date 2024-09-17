@@ -33,7 +33,7 @@ const About = () => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.5 }}
+      viewport={{ amount: 0.3 }}
       id="about"
       className="py-[60px] bg-secondary rounded-l-[40px] rounded-r-[40px] mt-[40px] lg:mt-0"
     >

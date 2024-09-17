@@ -61,7 +61,7 @@ const Contact = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.5 }}
+        viewport={{ amount: 0.3 }}
         className=" w-[80%] md:w-[95%] max-w-[1200px] shadow-[0px_0px_25px_1px_rgba(0,0,0,0.2)] mx-auto  text-black/70 p-8 rounded-[25px] my-[40px] mb-[60px]"
         id="contact"
       >
@@ -73,12 +73,12 @@ const Contact = () => {
           My <span className="text-primary">Services</span>{" "}
         </motion.h2>
         <div className="flex justify-between flex-col lg:flex-row">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mb-[15px]">
             <ul className="space-y-4">
               <motion.li
                 variants={childVariants}
                 custom={mobileVersion(-50)}
-                className="flex items-center gap-3"
+                className="flex flex-col lg:flex-row items-center gap-3"
               >
                 <Image
                   src="/assets/phone.png"
@@ -92,7 +92,7 @@ const Contact = () => {
               <motion.li
                 variants={childVariants}
                 custom={mobileVersion(-50)}
-                className="flex items-center gap-3"
+                className="flex flex-col lg:flex-row items-center gap-3"
               >
                 <Image
                   src="/assets/mail.png"

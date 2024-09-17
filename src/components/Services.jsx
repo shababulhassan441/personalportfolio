@@ -10,7 +10,7 @@ const Services = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.5 }}
+        viewport={{ amount: 0.2 }}
         className=" max-w-[1240px] mx-auto py-[60px] pt-[40px] my-[60px] text-center "
       >
         <motion.h2
