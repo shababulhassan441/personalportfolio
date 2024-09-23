@@ -4,8 +4,7 @@ import { ImWordpress } from "react-icons/im";
 import { SiNextdotjs } from "react-icons/si";
 import { FaWebflow } from "react-icons/fa6";
 
-
-//Skills card 
+//Skills card
 export const skillIcons = [
   { icon: "/assets/reacticon.png", label: "ReactJs" },
   { icon: "/assets/nextjs.png", label: "NextJs" },
@@ -15,9 +14,7 @@ export const skillIcons = [
   { icon: "/assets/wordpress.png", label: "wordPress" },
   { icon: "/assets/webflow.png", label: "webFlow" },
   { icon: "/assets/figma.png", label: "figma" },
-
 ];
-
 
 //Services Data
 export const services = [
@@ -36,7 +33,7 @@ export const services = [
     title: "webflow development",
     disc: "I will use Webflow to develop sleek and modern animated websites with cutting-edge designs.",
   },
- 
+
   {
     icon: <ImWordpress size={70} color="#fe4519" />,
     title: "wordpress development",
@@ -47,93 +44,91 @@ export const services = [
     title: "Ecommerce development",
     disc: "I will develop sleek, modern e-commerce stores to enhance your online shopping experience.",
   },
- 
 ];
 
 //Project tabs data
 export const tabsData = [
-    { name: "all" },
-    { name: "ReactJs" },
-    { name: "NextJs" },
-    { name: "Webflow" },
-  ];
+  { name: "all" },
+  { name: "NextJs" },
+  { name: "Webflow" },
+];
 
 //Project Cards data
-export  const projectData = [
-    {
-      id: 1,
-      name: "Porfolio website",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
-      link: "#",
-      category: "reactjs",
-      img:"/assets/l1.jpg"
-    },
-    {
-      id: 2,
-      name: "ecommerce website",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
-      link: "#",
-      category: "webflow",
-      img:"/assets/l2.png",
-    },
-    {
-      id: 3,
-      name: "business website",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
-      link: "#",
-      category: "reactjs",
-      img:"/assets/l3.jpg",
-    },
-    {
-      id: 4,
-      name: "Dashboard panel",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
-      link: "#",
-      category: "webflow",
-      img:"/assets/l4.jpg",
-    },
-    {
-      id: 5,
-      name: "agency website",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
-      link: "#",
-      category: "nextjs",
-      img:"/assets/l5.png",
-    },
-    {
-      id: 6,
-      name: "Porfolio website",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
-      link: "#",
-      category: "nextjs",
-      img:"/assets/l6.png",
-    },
-  ];
+export const projectData = [
+  {
+    id: 1,
+    name: "Agency Portfolio",
+    desc: "Created a Agency portfolio website to showcase work, skills, and  includes all relevant details as a digital resume",
+    link: "https://demobusiness.netlify.app/",
+    category: "nextjs",
+    img: "/assets/l3.png",
+  },
+  {
+    id: 2,
+    name: "Business website",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
+    link: "https://www.ternarydev.com/",
+    category: "webflow",
+    img: "/assets/l2.png",
+  },
+  {
+    id: 3,
+    name: "Hosting Services",
+    desc: "Hosting companies showcasing their offerings and solutions & features service comparisons, pricing.",
+    link: "https://saprise.netlify.app/",
+    category: "nextjs",
+    img: "/assets/l1.png",
+  },
+  {
+    id: 4,
+    name: "Social website",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
+    link: "https://www.pureprofitsgroup.com/",
+    category: "webflow",
+    img: "/assets/l4.png",
+  },
+  {
+    id: 5,
+    name: "Portfolio website",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
+    link: "#",
+    category: "nextjs",
+    img: "/assets/l5.png",
+  },
+  {
+    id: 6,
+    name: "Brand Landing",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolorum ipsam, accusantium nobis deserunt magni.",
+    link: "#",
+    category: "nextjs",
+    img: "/assets/l6.png",
+  },
+];
 
-  // Animations Variants and Properties
- export const containerVariants = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3, // Stagger animations of children
-        when: "beforeChildren",
-      },
+// Animations Variants and Properties
+export const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Stagger animations of children
+      when: "beforeChildren",
     },
-  };
-  
- export const childVariants = {
-    hidden: ({ axis = "y", value = 50, scale = 1 } = {}) => ({
-      opacity: 0,
-      x: axis === "x" ? value : 0, // Use value for x-axis movement if 'x'
-      y: axis === "y" ? value : 0, // Use value for y-axis movement if 'y'
-      scale: scale,
-    }),
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      scale: 1, // Reset the scale to original size
-      transition: { type: "spring", stiffness: 40, damping: 15 },
-    },
-  };
+  },
+};
+
+export const childVariants = {
+  hidden: ({ axis = "y", value = 50, scale = 1 } = {}) => ({
+    opacity: 0,
+    x: axis === "x" ? value : 0, // Use value for x-axis movement if 'x'
+    y: axis === "y" ? value : 0, // Use value for y-axis movement if 'y'
+    scale: scale,
+  }),
+  visible: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    scale: 1, // Reset the scale to original size
+    transition: { type: "spring", stiffness: 40, damping: 15 },
+  },
+};
